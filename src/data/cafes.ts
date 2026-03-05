@@ -140,7 +140,7 @@ export const cafes: Cafe[] = [
     type: "hybrid",
     label: "Silver",
     image: "/images/lulu.jpg",
-    description: "Ambiance branchée, clientele jeune. Bon equilibre travail-detente.",
+    description: "Ambiance branchee, clientele jeune. Bon equilibre travail-detente.",
     features: ["Ambiance Jeune", "WiFi Stable", "Espace Social", "Menu Varie"]
   },
   {
