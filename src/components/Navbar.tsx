@@ -1,7 +1,6 @@
 import { useState } from "react"
-import { Menu, X, Coffee } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { Button } from "./ui/button"
-import logo from "../assets/logo.jpg"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -11,7 +10,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <a href="/" className="flex items-center gap-2 transition-opacity hover:opacity-80">
-            <img src={logo} alt="CaféNomad" className="h-10 w-10 rounded-full object-cover" />
+            <img src="/logo.jpg" alt="CaféNomad" className="h-10 w-10 rounded-full object-cover" />
             <span className="text-xl font-bold bg-gradient-hero bg-clip-text text-transparent">
               CaféNomad
             </span>
