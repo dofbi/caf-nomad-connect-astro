@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Menu, X, Coffee } from "lucide-react"
 import { Button } from "./ui/button"
+import logo from "../assets/logo.jpg"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -10,11 +11,9 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <a href="/" className="flex items-center gap-2 transition-opacity hover:opacity-80">
-            <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center">
-              <Coffee className="h-6 w-6 text-primary-foreground" />
-            </div>
-            <span className="text-xl font-bold text-primary">
-              CafeNomad
+            <img src={logo} alt="CaféNomad" className="h-10 w-10 rounded-full object-cover" />
+            <span className="text-xl font-bold bg-gradient-hero bg-clip-text text-transparent">
+              CaféNomad
             </span>
           </a>
 
@@ -26,9 +25,9 @@ const Navbar = () => {
               Explorer
             </a>
             <a href="/about" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              A Propos
+              À Propos
             </a>
-            <Button className="bg-primary text-primary-foreground shadow-soft hover:shadow-card transition-all">
+            <Button className="bg-gradient-hero text-white shadow-soft hover:shadow-card transition-all">
               Rejoindre
             </Button>
           </div>
@@ -62,9 +61,9 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
               className="block py-2 text-sm font-medium text-foreground hover:text-primary transition-colors"
             >
-              A Propos
+              À Propos
             </a>
-            <Button className="w-full bg-primary text-primary-foreground shadow-soft">
+            <Button className="w-full bg-gradient-hero text-white shadow-soft">
               Rejoindre
             </Button>
           </div>

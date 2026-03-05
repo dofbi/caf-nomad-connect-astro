@@ -8,10 +8,10 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <Coffee className="h-6 w-6 text-primary" />
-              <span className="text-lg font-bold">CafeNomad</span>
+              <span className="text-lg font-bold">CaféNomad</span>
             </div>
             <p className="text-sm text-secondary-foreground/80">
-              Votre guide pour trouver les meilleurs cafes de travail au Senegal.
+              Votre guide pour trouver les meilleurs cafés de travail au Sénégal.
             </p>
           </div>
 
@@ -25,12 +25,12 @@ const Footer = () => {
               </li>
               <li>
                 <a href="/cafes" className="hover:text-primary transition-colors">
-                  Explorer les Cafes
+                  Explorer les Cafés
                 </a>
               </li>
               <li>
                 <a href="/about" className="hover:text-primary transition-colors">
-                  A Propos
+                  À Propos
                 </a>
               </li>
             </ul>
@@ -45,7 +45,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-primary" />
-                <span>Thies</span>
+                <span>Thiès</span>
               </li>
             </ul>
           </div>
@@ -63,9 +63,9 @@ const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-secondary-foreground/10 text-center text-sm">
           <p className="flex items-center justify-center gap-1">
-            Fait avec <Heart className="h-4 w-4 text-primary fill-primary" /> pour les nomades digitaux du Senegal
+            Fait avec <Heart className="h-4 w-4 text-primary fill-primary" /> pour les nomades digitaux du Sénégal
           </p>
-          <p className="mt-2 text-secondary-foreground/60">2026 CafeNomad Senegal. Tous droits reserves.</p>
+          <p className="mt-2 text-secondary-foreground/60">© 2026 CaféNomad Sénégal. Tous droits réservés.</p>
         </div>
       </div>
     </footer>

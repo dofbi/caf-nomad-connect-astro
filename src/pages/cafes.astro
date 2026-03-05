@@ -2,21 +2,19 @@
 import Layout from '../components/Layout.astro';
 import CafeCard from '../components/CafeCard';
 import { Button } from '../components/ui/button';
-import { Input } from '../components/ui/input';
-import { Badge } from '../components/ui/badge';
 import { cafes, cities, types } from '../data/cafes';
 ---
 
 <Layout>
   <!-- Header -->
-  <section className="bg-gradient-to-br from-primary to-ocean py-12">
+  <section className="bg-gradient-hero py-12">
     <div className="container mx-auto px-4">
       <div className="max-w-3xl mx-auto text-center space-y-4">
         <h1 className="text-3xl md:text-5xl font-bold text-white">
-          Explorer les Cafes
+          Explorer les Cafés
         </h1>
         <p className="text-lg text-white/90">
-          Trouvez votre prochain espace de travail ideal parmi {cafes.length} cafes selectionnes.
+          Trouvez votre prochain espace de travail idéal parmi {cafes.length} cafés sélectionnés.
         </p>
       </div>
     </div>
@@ -64,7 +62,7 @@ import { cafes, cities, types } from '../data/cafes';
     <div className="container mx-auto px-4">
       <div className="mb-6">
         <p className="text-muted-foreground">
-          {cafes.length} cafe{cafes.length !== 1 ? "s" : ""} trouve{cafes.length !== 1 ? "s" : ""}
+          {cafes.length} café{cafes.length !== 1 ? "s" : ""} trouvé{cafes.length !== 1 ? "s" : ""}
         </p>
       </div>
 
