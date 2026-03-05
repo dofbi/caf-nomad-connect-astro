@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <Coffee className="h-6 w-6 text-primary" />
+              <Coffee className="h-6 w-6 text-primary" strokeWidth={1.5} />
               <span className="text-lg font-bold">CaféNomad</span>
             </div>
             <p className="text-sm text-secondary-foreground/80">
