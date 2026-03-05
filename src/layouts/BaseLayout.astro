@@ -1,0 +1,30 @@
+import type { Metadata } from "astro";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+}
+
+export const metadata: Metadata = {
+  title: "CafeNomad - Les meilleurs cafes pour travailler au Senegal",
+  description: "Trouvez les meilleurs espaces de travail dans les cafes au Senegal. WiFi, prises, ambiance - tout ce dont vous avez besoin pour etre productif.",
+};
+
+const BaseLayout = ({ title }: Props) => {
+  return (
+    <html lang="fr">
+      <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title ? `${title} | CafeNomad` : "CafeNomad"}</title>
+      </head>
+      <body className="min-h-screen bg-background font-sans antialiased">
+        <slot />
+      </body>
+    </html>
+  );
+};
+
+export default BaseLayout;

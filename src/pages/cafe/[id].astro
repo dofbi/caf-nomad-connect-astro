@@ -1,0 +1,228 @@
+---
+import Layout from '../../components/Layout';
+import { Button } from '../../components/ui/button';
+import { Badge } from '../../components/ui/badge';
+import { Card, CardContent } from '../../components/ui/card';
+import { cafes } from '../../data/cafes';
+
+export function getStaticPaths() {
+  return cafes.map((cafe) => ({
+    params: { id: cafe.id },
+  }));
+}
+
+const { id } = Astro.params;
+const cafe = cafes.find((c) => c.id === id);
+
+if (!cafe) {
+  return Astro.redirect('/cafes');
+}
+---
+
+<Layout>
+  <!-- Back Button -->
+  <div className="container mx-auto px-4 py-6">
+    <Button variant="ghost" asChild>
+      <a href="/cafes">
+        <span className="mr-2">←</span> Retour
+      </a>
+    </Button>
+  </div>
+
+  <!-- Hero Image -->
+  <section className="container mx-auto px-4">
+    <div className="relative h-64 md:h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-[hsl(210,60%,60%)]/20 to-[hsl(210,60%,45%)]/20 flex items-center justify-center shadow-card">
+      <span className="text-8xl">☕</span>
+      {cafe.label && (
+        <Badge className="absolute top-6 right-6 bg-background text-foreground border-0 shadow-soft text-base px-4 py-2">
+          Label {cafe.label}
+        </Badge>
+      )}
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section className="container mx-auto px-4 py-12">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Main Content -->
+      <div className="lg:col-span-2 space-y-8">
+        <!-- Header -->
+        <div>
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">{cafe.name}</h1>
+          <div className="flex flex-wrap items-center gap-4 mb-4">
+            <div className="flex items-center gap-2">
+              <svg className="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span className="text-lg">{cafe.location}, {cafe.city}</span>
+            </div>
+            <Badge variant="outline" className="text-sm">
+              {cafe.type === "calm" ? "Calme & Ferme" : cafe.type === "open" ? "Ouvert & Inspirant" : "Hybride & Social"}
+            </Badge>
+          </div>
+          
+          <!-- Rating -->
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1">
+              {[...Array(5)].map((_, i) => (
+                <svg 
+                  key={i}
+                  className={`h-6 w-6 ${i < Math.floor(cafe.rating) ? 'fill-primary text-primary' : 'text-muted-foreground/30'}`}
+                  fill="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              ))}
+            </div>
+            <span className="text-2xl font-bold">{cafe.rating.toFixed(1)}</span>
+            <span className="text-muted-foreground">/5</span>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <Card>
+          <CardContent className="p-6">
+            <h2 className="text-xl font-semibold mb-3">A Propos</h2>
+            <p className="text-muted-foreground leading-relaxed">{cafe.description}</p>
+          </CardContent>
+        </Card>
+
+        <!-- Features -->
+        <Card>
+          <CardContent className="p-6">
+            <h2 className="text-xl font-semibold mb-4">Equipements</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {cafe.features.map((feature, index) => (
+                <div key={index} className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <svg className="h-4 w-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span>{feature}</span>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        <!-- Ratings Breakdown -->
+        <Card>
+          <CardContent className="p-6">
+            <h2 className="text-xl font-semibold mb-4">Evaluations Detaillees</h2>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <svg className="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+                  </svg>
+                  <span>WiFi & Connectivite</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-24 h-2 bg-muted rounded-full overflow-hidden">
+                    <div className="h-full bg-primary" style={{ width: `${(cafe.wifi / 5) * 100}%` }} />
+                  </div>
+                  <span className="font-semibold">{cafe.wifi}/5</span>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <svg className="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                  <span>Prises Electriques</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-24 h-2 bg-muted rounded-full overflow-hidden">
+                    <div className="h-full bg-primary" style={{ width: `${(cafe.outlets / 5) * 100}%` }} />
+                  </div>
+                  <span className="font-semibold">{cafe.outlets}/5</span>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <svg className="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Ambiance</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-24 h-2 bg-muted rounded-full overflow-hidden">
+                    <div className="h-full bg-primary" style={{ width: `${(cafe.ambiance / 5) * 100}%` }} />
+                  </div>
+                  <span className="font-semibold">{cafe.ambiance}/5</span>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <svg className="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Rapport Qualite-Prix</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-24 h-2 bg-muted rounded-full overflow-hidden">
+                    <div className="h-full bg-primary" style={{ width: `${(cafe.price / 5) * 100}%` }} />
+                  </div>
+                  <span className="font-semibold">{cafe.price}/5</span>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      <!-- Sidebar -->
+      <div className="space-y-6">
+        <Card className="sticky top-24">
+          <CardContent className="p-6 space-y-4">
+            <h3 className="text-xl font-semibold">Informations Pratiques</h3>
+            
+            <div className="space-y-3">
+              <div className="flex items-start gap-3">
+                <svg className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                  <p className="font-medium">Horaire</p>
+                  <p className="text-muted-foreground">{cafe.hours}</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <svg className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                  <p className="font-medium">Fourchette de Prix</p>
+                  <p className="text-muted-foreground">{cafe.priceRange}</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <svg className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <div>
+                  <p className="font-medium">Localisation</p>
+                  <p className="text-muted-foreground">{cafe.location}</p>
+                  <p className="text-muted-foreground">{cafe.city}, Senegal</p>
+                </div>
+              </div>
+            </div>
+
+            <Button className="w-full bg-gradient-to-br from-[hsl(210,60%,45%)] to-[hsl(190,60%,35%)] text-white shadow-soft">
+              Obtenir l'Itineraire
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  </section>
+</Layout>
