@@ -1,110 +1,232 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import { Card, CardContent } from '../components/ui/card';
+import { Badge } from '../components/ui/badge';
 ---
 
-<Layout>
-  <!-- Header -->
-  <section className="bg-gradient-hero py-16">
-    <div className="container mx-auto px-4">
-      <div className="max-w-3xl mx-auto text-center space-y-4">
-        <h1 className="text-3xl md:text-5xl font-bold text-white">
-          À Propos de CaféNomad
-        </h1>
-        <p className="text-lg text-white/90">
-          Votre compagnon pour trouver les meilleurs espaces de travail au Sénégal
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Mission Section -->
-  <section className="py-20 bg-background">
-    <div className="container mx-auto px-4">
-      <div className="max-w-3xl mx-auto space-y-8">
-        <h2 className="text-3xl font-bold text-center mb-8">Notre Mission</h2>
-        
-        <p className="text-lg text-muted-foreground leading-relaxed">
-          CaféNomad est né d'une simple observation : au Sénégal, les espaces de travail abordables sont difficiles à trouver, tandis que les coworkings traditionnels sont souvent trop chers pour les freelances, étudiants et nomades digitaux.
-        </p>
-        
-        <p className="text-lg text-muted-foreground leading-relaxed">
-          Notre mission est de connecter les travailleurs indépendants avec des cafés idéaux pour travailler, en évaluant chaque espace selon des critères importants : qualité du WiFi, disponibilité des prises, ambiance et rapport qualité-prix.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features -->
-  <section className="py-20 bg-muted/30">
-    <div className="container mx-auto px-4">
-      <h2 className="text-3xl font-bold text-center mb-12">Pourquoi Nous Faire Confiance ?</h2>
-      
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        <Card>
-          <CardContent className="p-6 text-center space-y-4">
-            <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
-              <svg className="h-8 w-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold">Évaluations Objectives</h3>
-            <p className="text-muted-foreground">
-              Chaque café est évalué selon des critères précis par notre équipe et la communauté.
+<Layout title="À Propos - CaféNomad Sénégal">
+  <div class="min-h-screen flex flex-col">
+    <Navbar client:load />
+    
+    <main class="flex-1">
+      <!-- Hero -->
+      <section class="bg-gradient-to-br from-primary via-ocean to-secondary py-16 md:py-24">
+        <div class="container mx-auto px-4">
+          <div class="max-w-3xl mx-auto text-center space-y-6">
+            <h1 class="text-4xl md:text-5xl font-bold text-white">
+              Notre Mission
+            </h1>
+            <p class="text-xl text-white/90 leading-relaxed">
+              Démocratiser l'accès aux espaces de travail flexibles pour les étudiants, 
+              freelances et nomades digitaux du Sénégal.
             </p>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
+      </section>
 
-        <Card>
-          <CardContent className="p-6 text-center space-y-4">
-            <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
-              <svg className="h-8 w-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
+      <!-- Story -->
+      <section class="py-20 bg-background">
+        <div class="container mx-auto px-4">
+          <div class="max-w-4xl mx-auto space-y-8">
+            <div class="text-center mb-12">
+              <h2 class="text-3xl md:text-4xl font-bold mb-4">L'Histoire de CaféNomad</h2>
             </div>
-            <h3 className="text-xl font-semibold">Présence Locale</h3>
-            <p className="text-muted-foreground">
-              Une connaissance approfondie du terrain au Sénégal avec des recommandations sur mesure.
-            </p>
-          </CardContent>
-        </Card>
 
-        <Card>
-          <CardContent className="p-6 text-center space-y-4">
-            <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
-              <svg className="h-8 w-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
+            <Card>
+              <CardContent class="p-8 space-y-6 text-lg text-muted-foreground leading-relaxed">
+                <p>
+                  En 2026, alors que le remote work explose en Afrique, nous avons remarqué un problème : 
+                  les coworking spaces à Dakar coûtent entre <strong>65 000 et 182 900 FCFA par mois</strong>, 
+                  hors de portée pour la plupart des étudiants et jeunes freelances.
+                </p>
+                
+                <p>
+                  Avec un budget de <strong>100 000 FCFA</strong>, un étudiant ne peut se permettre qu'1-2 mois 
+                  de coworking fixe. Mais les cafés ? Ils offrent WiFi, prises, ambiance et flexibilité pour 
+                  seulement 2000-5000 FCFA par session.
+                </p>
+
+                <p>
+                  <strong>CaféNomad</strong> est né de cette réalité : créer un guide communautaire des meilleurs 
+                  cafés de Dakar et Thiès, avec notations crowdsourcées, système de labels (Bronze à Platinum), 
+                  et partenariats pour des offres spéciales. Plus qu'une liste, c'est un écosystème pour connecter, 
+                  travailler et grandir ensemble.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <!-- Values -->
+      <section class="py-20 bg-muted/30">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Nos Valeurs</h2>
+            <p class="text-muted-foreground max-w-2xl mx-auto">
+              Ce qui guide chaque décision et partenariat que nous construisons.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <Card>
+              <CardContent class="p-6 text-center space-y-4">
+                <div class="w-14 h-14 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
+                  <svg class="h-7 w-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                    <circle cx="12" cy="12" r="4" stroke-width="2"/>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold">Accessibilité</h3>
+                <p class="text-muted-foreground">
+                  Rendre les espaces de travail abordables pour tous, sans compromis sur la qualité.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent class="p-6 text-center space-y-4">
+                <div class="w-14 h-14 mx-auto bg-ocean/10 rounded-full flex items-center justify-center">
+                  <svg class="h-7 w-7 text-ocean" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold">Communauté</h3>
+                <p class="text-muted-foreground">
+                  Favoriser les connexions authentiques entre nomades digitaux et créatifs.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent class="p-6 text-center space-y-4">
+                <div class="w-14 h-14 mx-auto bg-secondary/10 rounded-full flex items-center justify-center">
+                  <svg class="h-7 w-7 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold">Innovation</h3>
+                <p class="text-muted-foreground">
+                  Évoluer constamment grâce aux retours communautaires et nouvelles technologies.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <!-- Coverage -->
+      <section class="py-20 bg-background">
+        <div class="container mx-auto px-4">
+          <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+              <h2 class="text-3xl md:text-4xl font-bold mb-4">Notre Couverture</h2>
+              <p class="text-muted-foreground">
+                Actuellement présent dans deux villes clés du Sénégal, avec des plans d'expansion.
+              </p>
             </div>
-            <h3 className="text-xl font-semibold">Communauté Active</h3>
-            <p className="text-muted-foreground">
-              Rejoignez notre réseau de professionnels et partagez vos expériences.
-            </p>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
-  </section>
 
-  <!-- CTA -->
-  <section className="py-20 bg-gradient-hero">
-    <div className="container mx-auto px-4 text-center">
-      <div className="max-w-2xl mx-auto space-y-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-white">
-          Rejoignez la Communauté
-        </h2>
-        <p className="text-lg text-white/90">
-          Découvrez votre prochain spot de travail préféré et connectez-vous avec d'autres nomades digitaux.
-        </p>
-        <a 
-          href="/cafes" 
-          className="inline-flex items-center justify-center rounded-lg bg-white text-primary px-8 py-3 text-base font-medium shadow-soft hover:bg-white/90 transition-colors"
-        >
-          Explorer les Cafés
-          <span className="ml-2">→</span>
-        </a>
-      </div>
-    </div>
-  </section>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Card class="border-primary/20">
+                <CardContent class="p-6 space-y-3">
+                  <svg class="h-8 w-8 text-primary mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                  <h3 class="text-2xl font-bold">Dakar</h3>
+                  <p class="text-muted-foreground">
+                    Capitale économique avec des quartiers comme Almadies, Mermoz, Point E, Plateau, 
+                    Sacré-Cœur et Ngor. Hub de l'innovation tech au Sénégal.
+                  </p>
+                  <div class="pt-2">
+                    <Badge class="bg-primary/10 text-primary border-0">8 cafés</Badge>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card class="border-ocean/20">
+                <CardContent class="p-6 space-y-3">
+                  <svg class="h-8 w-8 text-ocean mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                  <h3 class="text-2xl font-bold">Thiès</h3>
+                  <p class="text-muted-foreground">
+                    Deuxième ville du Sénégal avec ISEP, ENSA Thiès, et un écosystème tech émergent. 
+                    Parfait pour étudiants et chercheurs.
+                  </p>
+                  <div class="pt-2">
+                    <Badge class="bg-ocean/10 text-ocean border-0">Bientôt</Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Partners -->
+      <section class="py-20 bg-muted/30">
+        <div class="container mx-auto px-4">
+          <div class="max-w-4xl mx-auto text-center space-y-8">
+            <h2 class="text-3xl md:text-4xl font-bold">Communautés Partenaires</h2>
+            <p class="text-muted-foreground text-lg">
+              Nous collaborons avec les meilleures communautés tech du Sénégal pour organiser des événements 
+              et créer des opportunités de networking.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Card>
+                <CardContent class="p-6 text-center">
+                  <h4 class="font-semibold text-lg mb-2">Galsen Dev</h4>
+                  <p class="text-sm text-muted-foreground">
+                    2500+ développeurs engagés dans le #SharingKnowledge
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent class="p-6 text-center">
+                  <h4 class="font-semibold text-lg mb-2">Galsen AI</h4>
+                  <p class="text-sm text-muted-foreground">
+                    Intelligence artificielle et innovation au Sénégal
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent class="p-6 text-center">
+                  <h4 class="font-semibold text-lg mb-2">Propel Community</h4>
+                  <p class="text-sm text-muted-foreground">
+                    Croissance et développement tech
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="bg-gradient-to-br from-primary via-ocean to-secondary py-20 relative overflow-hidden">
+        <div class="container mx-auto px-4 text-center relative z-10">
+          <div class="max-w-2xl mx-auto space-y-6">
+            <svg class="h-12 w-12 mx-auto text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+            <h2 class="text-3xl md:text-4xl font-bold text-white">
+              Fait par des Nomades, pour des Nomades
+            </h2>
+            <p class="text-lg text-white/90">
+              Rejoignez-nous pour bâtir ensemble l'écosystème de travail flexible du Sénégal.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer client:load />
+  </div>
 </Layout>
