@@ -99,3 +99,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+}
