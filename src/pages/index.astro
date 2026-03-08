@@ -1,7 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import CafeCard from '../components/CafeCard';
-import { Button } from '../components/ui/button';
 import { cafes } from '../data/cafes';
 import { ArrowRight, Wifi, MapPin, Users, Zap } from 'lucide-react';
 
@@ -10,36 +11,7 @@ const featuredCafes = cafes.filter(c => c.label === "Platinum" || c.label === "G
 
 <Layout title="CaféNomad Sénégal - Travaillez dans les meilleurs cafés">
   <div class="min-h-screen flex flex-col">
-    <!-- Navbar -->
-    <nav class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-      <div class="container mx-auto px-4">
-        <div class="flex h-16 items-center justify-between">
-          <!-- Logo -->
-          <a href="/" class="flex items-center gap-2 transition-opacity hover:opacity-80">
-            <img src="/logo.jpg" alt="CaféNomad" class="h-10 w-10 rounded-full object-cover" />
-            <span class="text-xl font-bold bg-gradient-to-r from-primary to-ocean bg-clip-text text-transparent">
-              CaféNomad
-            </span>
-          </a>
-
-          <!-- Desktop Navigation -->
-          <div class="hidden md:flex items-center gap-6">
-            <a href="/" class="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              Accueil
-            </a>
-            <a href="/cafes" class="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              Explorer
-            </a>
-            <a href="/about" class="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              À Propos
-            </a>
-            <a href="#" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gradient-to-r from-primary to-ocean text-white shadow-soft hover:shadow-card transition-all h-10 px-4 py-2">
-              Rejoindre
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav>
+    <Navbar client:load />
 
     <main class="flex-1">
       <!-- Hero Section -->
@@ -191,67 +163,6 @@ const featuredCafes = cafes.filter(c => c.label === "Platinum" || c.label === "G
       </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t bg-secondary text-secondary-foreground">
-      <div class="container mx-auto px-4 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div class="space-y-4">
-            <div class="flex items-center gap-2">
-              <span class="text-3xl">☕</span>
-              <span class="text-lg font-bold">CaféNomad</span>
-            </div>
-            <p class="text-sm text-secondary-foreground/80">
-              Votre guide pour trouver les meilleurs cafés de travail au Sénégal.
-            </p>
-          </div>
-
-          <div>
-            <h3 class="font-semibold mb-4">Navigation</h3>
-            <ul class="space-y-2 text-sm">
-              <li>
-                <a href="/" class="hover:text-primary transition-colors">Accueil</a>
-              </li>
-              <li>
-                <a href="/cafes" class="hover:text-primary transition-colors">Explorer les Cafés</a>
-              </li>
-              <li>
-                <a href="/about" class="hover:text-primary transition-colors">À Propos</a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 class="font-semibold mb-4">Villes</h3>
-            <ul class="space-y-2 text-sm">
-              <li class="flex items-center gap-2">
-                <MapPin class="h-4 w-4 text-primary" />
-                <span>Dakar</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <MapPin class="h-4 w-4 text-primary" />
-                <span>Thiès</span>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 class="font-semibold mb-4">Contact</h3>
-            <ul class="space-y-2 text-sm">
-              <li class="flex items-center gap-2">
-                <span class="text-primary">✉</span>
-                <span>contact@cafenomad.sn</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="mt-12 pt-8 border-t border-secondary-foreground/10 text-center text-sm">
-          <p class="flex items-center justify-center gap-1">
-            Fait avec <span class="text-primary">♥</span> pour les nomades digitaux du Sénégal
-          </p>
-          <p class="mt-2 text-secondary-foreground/60">© 2026 CaféNomad Sénégal. Tous droits réservés.</p>
-        </div>
-      </div>
-    </footer>
+    <Footer client:load />
   </div>
 </Layout>

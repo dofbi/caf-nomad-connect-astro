@@ -40,7 +40,7 @@ const Navbar = () => {
         </div>
 
         {isOpen && (
-          <div className="md:hidden py-4 space-y-4">
+          <div className="md:hidden py-4 space-y-4 animate-in slide-in-from-top">
             <a
               href="/"
               onClick={() => setIsOpen(false)}
@@ -62,7 +62,7 @@ const Navbar = () => {
             >
               À Propos
             </a>
-            <Button className="w-full bg-gradient-hero text-white shadow-soft">
+            <Button className="w-full bg-gradient-hero text-white shadow-soft hover:shadow-card transition-all">
               Rejoindre
             </Button>
           </div>
