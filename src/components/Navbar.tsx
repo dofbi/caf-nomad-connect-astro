@@ -11,7 +11,7 @@ const Navbar = () => {
         <div className="flex h-16 items-center justify-between">
           <a href="/" className="flex items-center gap-2 transition-opacity hover:opacity-80">
             <img src="/logo.jpg" alt="CaféNomad" className="h-10 w-10 rounded-full object-cover" />
-            <span className="text-xl font-bold bg-gradient-hero bg-clip-text text-transparent">
+            <span className="text-xl font-bold bg-gradient-to-r from-primary via-ocean to-secondary bg-clip-text text-transparent">
               CaféNomad
             </span>
           </a>
@@ -26,7 +26,7 @@ const Navbar = () => {
             <a href="/about" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
               À Propos
             </a>
-            <Button className="bg-gradient-hero text-white shadow-soft hover:shadow-card transition-all">
+            <Button className="bg-gradient-to-r from-primary via-ocean to-secondary text-white shadow-soft hover:shadow-card transition-all">
               Rejoindre
             </Button>
           </div>
@@ -62,7 +62,7 @@ const Navbar = () => {
             >
               À Propos
             </a>
-            <Button className="w-full bg-gradient-hero text-white shadow-soft hover:shadow-card transition-all">
+            <Button className="w-full bg-gradient-to-r from-primary via-ocean to-secondary text-white shadow-soft hover:shadow-card transition-all">
               Rejoindre
             </Button>
           </div>
